@@ -101,7 +101,9 @@ class Game < ActiveRecord::Base
   def check_rows_for_winner
     board.each do |a|
       if a[0]
-        return a[0] == a[1] && a[0] == a[2]
+        if a[0] == a[1] && a[0] == a[2]
+          return true
+        end
       end
     end
     return false
@@ -110,7 +112,9 @@ class Game < ActiveRecord::Base
   def check_columns_for_winner
     (0..2).each do |e|
       if board[0][e]
-        return board[0][e] == board[1][e] && board[0][e] == board[2][e]
+        if board[0][e] == board[1][e] && board[0][e] == board[2][e]
+          return true
+        end
       end
     end
     false
