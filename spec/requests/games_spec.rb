@@ -12,7 +12,7 @@ describe "Games" do
   describe "Index page" do
     before { visit root_path }
 
-    let(:heading)    { 'TicTacToe' }
+    let(:heading)    { "Let's Play TicTacToe!" }
     let(:page_title) { '' }
 
     it_should_behave_like "all games pages"
@@ -35,8 +35,9 @@ describe "Games" do
     it_should_behave_like "all games pages"
 
     it "should show the updated board when a square is clicked" do
-      # TODO This button with likely eventually have a different name
-      click_button '0, 0'
+      within '.top.left' do
+        find("input[type='submit']").click
+      end
 
       page.should have_selector 'td', text: 'x'
     end

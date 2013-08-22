@@ -27,6 +27,14 @@ describe Game do
 			@test_game.board[0][1].should == 'x'
 		end
 
+    it "should not allow players other than 'x' and 'o'" do
+      lambda { @test_game.update_board('y', 0, 0) }.should raise_error(ArgumentError)
+    end
+
+    it "should not allow positions outside the 3x3 board" do
+      lambda { @test_game.update_board('x', 4, 0) }.should raise_error(ArgumentError)
+    end
+
     it "should not allow an 'x' or 'o' to be inserted into an already full spot" do
       @test_game.update_board('x', 0, 0)
       lambda { @test_game.update_board('x', 0, 0) }.should raise_error(ArgumentError)
@@ -34,7 +42,7 @@ describe Game do
 
     it "should be saved to the database" do
     	@test_game.update_board('x', 2, 1)
-    	saved_game = Game.all.find { |g| g.id == 1 }
+    	saved_game = Game.all.find { |g| g.id == @test_game.id }
     	saved_game.display_element(2, 1).should == 'x'
     end
 	end
@@ -49,6 +57,19 @@ describe Game do
       @test_game.current_player.should == 'o'
 		end
 	end
+  
+  describe "previous_player" do
+    it "should set even turns previous player to 'o' " do
+      @test_game.play(2,0)
+      @test_game.play(2,1)
+      @test_game.previous_player.should == 'o'
+    end
+
+    it "should set odd turns previous player to 'x' " do
+      @test_game.play(2, 0)
+      @test_game.previous_player.should == 'x'
+    end
+  end
 
 	describe "play" do 
 	  it "should set the first player, 'x', to a position on the board" do
@@ -66,7 +87,7 @@ describe Game do
 									    					  [nil, 'o', nil]]
 		end
 
-		it "should determine that player, 'x' won with a message!" do
+		it "should determine that player 'x' won with a message!" do
 			@test_game.play(0,0)
 			@test_game.play(1,0)
 			@test_game.play(0,1)
@@ -75,7 +96,7 @@ describe Game do
 			@test_game.play(1,2).should == "Player x is the winner!"
 		end
 
-    it "should determine that play, 'o', won with a message!" do
+    it "should determine that player 'o' won with a message!" do
       @test_game.play(1,0)
       @test_game.play(0,0)
       @test_game.play(0,1)
@@ -86,61 +107,61 @@ describe Game do
     end
 	end 
 
-  describe "winner?" do
-    it "should be true if the first row is filled with the same letter" do
+  describe "winner" do
+    it "should return 'x' the first row is filled with x's" do
       @test_game.update_board('x', 0, 0)
       @test_game.update_board('x', 0, 1)
       @test_game.update_board('x', 0, 2)
 
-      @test_game.winner?.should == true
+      @test_game.winner.should == 'x'
     end
     
-    it "should be true if the second row is filled with the same letter" do
+    it "should return 'd' if the second row is filled with o's" do
       @test_game.update_board('o', 1, 0)
       @test_game.update_board('o', 1, 1)
       @test_game.update_board('o', 1, 2)
 
-      @test_game.winner?.should == true
+      @test_game.winner.should == 'o'
     end
 
-    it "should be false if elements in any row are not the same" do
+    it "should return nil if elements in any row are not the same" do
       @test_game.update_board('x', 0, 0)
       @test_game.update_board('o', 0, 1)
       @test_game.update_board('x', 0, 2)
 
-      @test_game.winner?.should == false
+      @test_game.winner.should be_nil
     end
 
-    it "should be false if elements are all still nil" do
-      @test_game.winner?.should == false
+    it "should return nil if elements are all still nil" do
+      @test_game.winner.should be_nil
     end
 
-    it "should be true if all elements in a column are filled with the same letter" do
+    it "should return the letter if all elements in a column are filled with the same letter" do
       @test_game.update_board('x', 0, 0)
       @test_game.update_board('x', 1, 0)
       @test_game.update_board('x', 2, 0)
 
-      @test_game.winner?.should == true
+      @test_game.winner.should == 'x'
     end
 
-    it "should be false if all elements in a column are nil" do
-      @test_game.winner?.should == false
+    it "should return nil if all elements in a column are nil" do
+      @test_game.winner.should be_nil
     end
 
-    it "should be true if there are three in a row at a slant from left to right" do
+    it "should return 'x' if there are three x's in a row at a slant from left to right" do
       @test_game.update_board('x', 0, 0)
       @test_game.update_board('x', 1, 1)
       @test_game.update_board('x', 2, 2)
 
-      @test_game.winner?.should == true
+      @test_game.winner.should == 'x'
     end
 
-    it "should be true if there are three in a row at a slant from left to right" do
+    it "should return 'x' if there are three x's in a row at a slant from left to right" do
       @test_game.update_board('x', 0, 2)
       @test_game.update_board('x', 1, 1)
       @test_game.update_board('x', 2, 0)
 
-      @test_game.winner?.should == true
+      @test_game.winner.should == 'x'
     end
   end
 end
