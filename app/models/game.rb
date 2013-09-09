@@ -62,11 +62,6 @@ class Game < ActiveRecord::Base
     end
   end
 
-  # checks for previous_player by comparing current_player
-  def previous_player
-    current_player == 'x' ? 'o' : 'x'
-  end
-
   # Plays the game
   # calls on update_board and winner
   def play(row, column)

@@ -57,19 +57,6 @@ describe Game do
       @test_game.current_player.should == 'o'
 		end
 	end
-  
-  describe "previous_player" do
-    it "should set even turns previous player to 'o' " do
-      @test_game.play(2,0)
-      @test_game.play(2,1)
-      @test_game.previous_player.should == 'o'
-    end
-
-    it "should set odd turns previous player to 'x' " do
-      @test_game.play(2, 0)
-      @test_game.previous_player.should == 'x'
-    end
-  end
 
 	describe "play" do 
 	  it "should set the first player, 'x', to a position on the board" do
