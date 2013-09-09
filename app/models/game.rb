@@ -36,18 +36,12 @@ class Game < ActiveRecord::Base
   # 
   # use helpers/games_helper to see board in the terminal
   def update_board(player, row, column)
-    board[row][column] = player
-    
+    # TODO
   end
 
   # Returns the current_player
   # @return [String] 'x' or 'o'
   def current_player
-    # TODO
-  end
-
-  # Checks for previous_player by comparing current_player
-  def previous_player
     # TODO
   end
 
@@ -63,7 +57,7 @@ class Game < ActiveRecord::Base
   # Checks if there is a winner.
   # @return [Boolean] returns true if there is a winner, false otherwise
   # Calls on private methods below
-  def winner?
+  def winner
     # TODO
   end
 
