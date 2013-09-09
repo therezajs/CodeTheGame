@@ -68,29 +68,19 @@ class Game < ActiveRecord::Base
   end
 
   # Plays the game
-  # calls on update_board and winner?
+  # calls on update_board and winner
   def play(row, column)
-    if winner?
-      "Player #{previous_player} is the winner!"
+    if winner
+      "Player #{winner} is the winner!"
     else
-      # TODO write a test for this!
       update_board(current_player, row, column)
     end
   end
 
   # Checks if there is a winner.
-  # TODO / NOTE: I would prefer to see this method return the winner, or nil
   # @return [Boolean] returns true if there is a winner, false otherwise
-  def winner?
-    if check_rows_for_winner
-      true
-    elsif check_columns_for_winner
-      true
-    elsif check_diagonals_for_winner
-      true
-    else
-      false
-    end
+  def winner
+    check_rows_for_winner || check_columns_for_winner || check_diagonals_for_winner
   end
 
 
@@ -101,34 +91,34 @@ class Game < ActiveRecord::Base
     board.each do |a|
       if a[0]
         if a[0] == a[1] && a[0] == a[2]
-          return true
+          return a[0]
         end
       end
     end
-    return false
+    nil
   end
 
   def check_columns_for_winner
     (0..2).each do |e|
       if board[0][e]
         if board[0][e] == board[1][e] && board[0][e] == board[2][e]
-          return true
+          return board[0][e]
         end
       end
     end
-    false
+    nil
   end
 
   def check_diagonals_for_winner
     if board[1][1]
       if board[0][0] == board[1][1] && board[0][0] == board[2][2]
-        true
-      elsif board[0][2] == board[1][1] && board[0][2] == board[2][0]
-        true
+        return board[1][1]
       end
-    else
-      false
+      if board[0][2] == board[1][1] && board[0][2] == board[2][0]
+        return board[1][1]
+      end
     end
+    return nil
   end
 
 end

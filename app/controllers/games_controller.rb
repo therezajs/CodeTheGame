@@ -26,8 +26,8 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @game.play(params[:game][:row].to_i,params[:game][:column].to_i)
     redirect_to :action => 'show', :id => @game.id
-    if @game.winner?
-      flash[:success] = "Player #{@game.previous_player} is the winner!"
+    if @game.winner
+      flash[:success] = "Player #{@game.winner} is the winner!"
     end
   end
 end
