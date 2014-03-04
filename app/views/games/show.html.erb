@@ -4,6 +4,12 @@
 
 <h2 class="right_align" id="my_logo"><%= link_to ">>> Play New Game", new_path %></h2>
 
+<% if @game.board.flatten(1).compact.length.odd? %>
+  <% current_user = "o" %>
+<% else %>
+  <% current_user = "x" %>
+<% end %>
+
 <table id="board">
   <!-- iterate through each array in board, grabs the array and the index -->
   <% for row in 0...@game.board.length %>
@@ -14,7 +20,7 @@
           <% if @game.board[row][column] != nil %>
             <%= @game.board[row][column] %>
           <% else %>
-             <%= render 'games/board_form', game: @game, row: row, column: column %>
+             <%= render 'games/board_form', game: @game, row: row, column: column, current_user: current_user %>
             <%#= render :partial => "board_form", :locals => { :row => row, :column => column } %>
           <% end %>
         </td>

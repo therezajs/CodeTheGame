@@ -6,5 +6,5 @@
   <%= g.hidden_field :row, :value => row %>
   <%= g.hidden_field :column, :value => column %>
 <!-- send the form to /show -->
-  <%= g.submit "#{row}, #{column}", class: "big-btn btn btn-large btn-primary" %>
+  <%= g.submit current_user, class: "big-btn btn btn-large btn-primary" %>
 <% end %>
