@@ -54,6 +54,7 @@ GEM
       multi_json (~> 1.0)
     ffi (1.7.0)
     hike (1.2.2)
+    hirb (0.7.1)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.0.2)
@@ -152,6 +153,7 @@ DEPENDENCIES
   bootstrap-sass (= 2.1)
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)
+  hirb
   jquery-rails (= 2.0.2)
   pg (= 0.12.2)
   pry-rails

@@ -22,6 +22,10 @@ textarea {
   resize: vertical;
 }
 
+form {
+  margin-bottom: 0;
+}
+
 .center {
   text-align: center;
   h1 {
@@ -35,11 +39,11 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
-h1 { 
-  font-size: 3em; 
+h1 {
+  font-size: 3em;
   letter-spacing: -2px;
-  margin-bottom: 30px; 
-  text-align: center; 
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 h2 {
@@ -58,7 +62,7 @@ p {
 
 input[type="submit"].big-btn {
   width: 100%;
-  height: 200px;
+  height: 150px;
 }
 
 #board {
@@ -67,36 +71,36 @@ input[type="submit"].big-btn {
   font-size: 72px;
   text-align: center;
   tr, td {
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     .left {
-      border-right: 5px solid black;
-      width: 200px;
-      height: 200px;
+      border-right: 3px solid black;
+      width: 150px;
+      height: 150px;
     }
     .top {
-      border-bottom: 5px solid black;
+      border-bottom: 3px solid black;
     }
     .bottom {
-      border-top: 5px solid black;
+      border-top: 3px solid black;
     }
     .right {
-      border-left: 5px solid black;
-      width: 200px;
-      height: 200px;
+      border-left: 3px solid black;
+      width: 150px;
+      height: 150px;
     }
     .vertical-mid {
-      border-left: 5px solid black;
-      border-right: 5px solid black;
-      width: 200px;
-      height: 200px;
+      border-left: 3px solid black;
+      border-right: 3px solid black;
+      width: 150px;
+      height: 150px;
     }
     .horizontal-mid {
-      border-top: 5px solid black;
-      border-bottom: 5px solid black;
-      width: 200px;
-      height: 200px;
+      border-top: 3px solid black;
+      border-bottom: 3px solid black;
+      width: 150px;
+      height: 150px;
     }
     a {
       background-color: #C299FF;
@@ -116,7 +120,7 @@ input[type="submit"].big-btn {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white; 
+  color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -148,8 +152,8 @@ footer {
     float: right;
     list_style: none;
     li {
-      float: left; 
+      float: left;
       margin-left: 10px;
     }
   }
-}  
+}

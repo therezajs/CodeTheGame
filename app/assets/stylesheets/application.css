@@ -11,3 +11,19 @@
  *= require_self
  *= require_tree .
  */
+
+#logo {
+	font-family: 'Ribeye Marrow', courier, serif;
+}
+.right_align {
+	font-family: 'Ribeye Marrow', courier, serif;
+	margin-right: 70px;
+	text-align: right;
+}
+.my_btn {
+	margin: 30px;
+	min-width: 120px;
+}
+.right_align a {
+	text-decoration: none !important;
+}

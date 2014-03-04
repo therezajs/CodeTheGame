@@ -1,0 +1,2 @@
+class SnakesController < ApplicationController
+end

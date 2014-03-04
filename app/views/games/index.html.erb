@@ -1,9 +1,22 @@
-<div class="center hero-unit">
-<h1><!-- TODO --></h1>
- <%#= link_to "TODO", new_path, class: "btn btn-large primary" %>
- </div>
+<% content_for :title do %>Into the forest<% end %>
+<% content_for :game_title do %>Code the games<% end %>
+
+<img src="assets/scrabble.jpg" id="bg" alt="">
+<div class="row">
+<div class="span2">hello</div>
+<div class="span8">
+	hello
+	<div class="center hero-unit" id="jumbotron">
+	<h1>Let's Play Games!</h1>
+	 <%= link_to "Start TicTacToe!", new_path, class: "btn btn-large btn-success my_btn" %>
+	 <%= link_to "Start Snake!", "/snake", class: "btn btn-large btn-success my_btn" %>
+	 </div>
+</div>
+<div class="span2">hello</div>
+</div>
 
 <!-- USE THIS TO VIEW ALL THE GAMES PLAYED SO FAR -->
 <%# @games.each do |game| %>
-<!--<%#= game.inspect %>-->
+<%#= game.inspect %>
+<!-- <br> -->
 <%# end %>

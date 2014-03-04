@@ -22,7 +22,7 @@ module GamesHelper
   end
 
   def create_cell_class(row, column)
-  
+
     case row
 
     when 0
@@ -34,7 +34,7 @@ module GamesHelper
         "top vertical-mid"
       when 2
         "top right"
-      end 
+      end
 
     when 1
 

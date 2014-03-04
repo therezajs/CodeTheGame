@@ -1,25 +1,24 @@
-<!-- TODO -->
-<!-- TODO -->
+<% content_for :title do %>Play Game<% end %>
+<% content_for :game_title do %>TicTacToe<% end %>
 
-<br/>
 
-<h1><!-- TODO --></h1>
+<h2 class="right_align" id="my_logo"><%= link_to ">>> Play New Game", new_path %></h2>
 
 <table id="board">
   <!-- iterate through each array in board, grabs the array and the index -->
-  <%# <!-- TODO --> %>
+  <% for row in 0...@game.board.length %>
     <tr>
      <!-- iterate through the row and column to place the coordinates on the board -->
-      <%# <!-- TODO -->  %>
+      <% for column in 0...@game.board[row].length %>
         <td class="<%= create_cell_class(row, column) %>" >
-          <%# <!-- TODO -->  %>
-            <%#= <!-- TODO -->  %>
-          <%# <!-- TODO -->  %>
-          <!-- render partial here! -->
-            <%#= <!-- TODO -->  %>
-          <%# <!-- TODO -->  %>
+          <% if @game.board[row][column] != nil %>
+            <%= @game.board[row][column] %>
+          <% else %>
+             <%= render 'games/board_form', game: @game, row: row, column: column %>
+            <%#= render :partial => "board_form", :locals => { :row => row, :column => column } %>
+          <% end %>
         </td>
-      <%# <!-- TODO -->  %>
+      <% end %>
     </tr>
-  <%# <!-- TODO -->  %>
+  <% end %>
 </table>

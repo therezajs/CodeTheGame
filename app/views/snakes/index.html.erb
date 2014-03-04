@@ -1,0 +1,9 @@
+<% content_for :title do %>Snake Game<% end %>
+<% content_for :game_title do %>Snake Game<% end %>
+
+<h2 class="right_align"><%= link_to ">>> Play New Game", "/snake" %></h2>
+<canvas id="chunk-game" height="480" width="800"></canvas>
+
+<script type="text/javascript">
+  <%= raw Rails.application.assets['application.js'].to_s %>
+</script>

@@ -21,7 +21,9 @@ TicTacToe::Application.routes.draw do
   #   - http://guides.rubyonrails.org/routing.html#crud-verbs-and-actions
 
   resources :games
+  resources :snakes
   root to: 'games#index'
-  match '/new',  to: 'games#new' 
+  match '/new',  to: 'games#new'
   match '/show', to: 'games#show'
+  match '/snake', to: 'snakes#index'
 end
