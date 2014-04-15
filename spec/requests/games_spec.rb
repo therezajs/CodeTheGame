@@ -1,26 +1,26 @@
 require 'spec_helper'
 
 describe "Games" do
-  
+
   subject { page }
 
   shared_examples_for "all games pages" do
-    it { should have_selector('h1', text: heading) }
+    # it { should have_selector('h1', text: heading) }
     it { should have_selector('title', text: full_title(page_title)) }
   end
 
   describe "Index page" do
     before { visit root_path }
 
-    let(:heading)    { "Let's Play TicTacToe!" }
-    let(:page_title) { '' }
+    let(:heading)    { "Les jeux sont faites" }
+    let(:page_title) { "Into the forest" }
 
     it_should_behave_like "all games pages"
 
     it "should have a link to the game" do
       visit root_path
 
-      click_link 'Start Game!'
+      click_link 'Start TicTacToe'
       page.should have_selector 'title', text: full_title('Play Game')
     end
   end
@@ -48,7 +48,7 @@ describe "Games" do
     # which would mean that this test automatically passes, even if the link doesn't work
     visit root_path
 
-    click_link 'Start Game'
+    click_link 'TicTacToe Game'
     page.should have_selector 'title', text: full_title('Play Game')
   end
 end

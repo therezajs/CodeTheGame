@@ -1,7 +1,6 @@
 <% content_for :title do %>Play Game<% end %>
 <% content_for :game_title do %>TicTacToe<% end %>
 
-
 <h2 class="right_align" id="my_logo"><%= link_to ">>> Play New Game", new_path %></h2>
 
 <% if @game.board.flatten(1).compact.length.odd? %>
